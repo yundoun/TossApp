@@ -28,9 +28,8 @@ import androidx.compose.ui.unit.sp
 fun MyAccount() {
     Column(
         modifier = Modifier
-            .background(Color.LightGray)
+            .background(Color.White)
     ) {
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -39,7 +38,7 @@ fun MyAccount() {
         ) {
             Text(
                 text = "내 계좌",
-                fontSize = 32.sp,
+                fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
             Text(
@@ -56,7 +55,7 @@ fun MyAccount() {
                     .clip(RoundedCornerShape(10.dp))
                     .weight(1f)
                     .height(80.dp)
-                    .background(Color.Gray),
+                    .background(Color.LightGray),
                 contentAlignment = Alignment.CenterStart,
             ) {
                 Column(
@@ -79,7 +78,7 @@ fun MyAccount() {
                     .clip(RoundedCornerShape(10.dp))
                     .weight(1f)
                     .height(80.dp)
-                    .background(Color.Gray),
+                    .background(Color.LightGray),
                 contentAlignment = Alignment.CenterStart,
             ) {
                 Column(
