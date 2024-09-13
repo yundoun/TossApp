@@ -1,7 +1,6 @@
 package com.example.tossapp.ui.components
 
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -9,7 +8,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
-import androidx.compose.animation.with
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Menu
@@ -17,8 +16,9 @@ import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -36,6 +36,36 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
+
+@Composable
+fun CustomTopAppBarWithTabs(selectedTabIndex: Int, onTabSelected: (Int) -> Unit) {
+    Column {
+        // 기존 TopAppBar
+        TopAppBar()
+
+        // TabRow를 추가하여 TopAppBar 아래에 탭을 왼쪽 정렬로 표시
+        TabRow(
+            selectedTabIndex = selectedTabIndex,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Tab(
+                selected = selectedTabIndex == 0,
+                onClick = { onTabSelected(0) },
+                text = { Text("토스증권 홈") }
+            )
+            Tab(
+                selected = selectedTabIndex == 1,
+                onClick = { onTabSelected(1) },
+                text = { Text("발견") }
+            )
+            Tab(
+                selected = selectedTabIndex == 2,
+                onClick = { onTabSelected(2) },
+                text = { Text("뉴스") }
+            )
+        }
+    }
+}
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
@@ -61,13 +91,19 @@ fun TopAppBar() {
     val numberColor = if (currentTitleIndex == 0) Color.Red else Color.Blue
     val percentageColor = if (currentTitleIndex == 0) Color.Red else Color.Blue
 
-    TopAppBar(
+    androidx.compose.material3.TopAppBar(
         title = {
             AnimatedContent(
                 targetState = titles[currentTitleIndex],
                 transitionSpec = {
-                    (slideInVertically { fullHeight -> fullHeight } + fadeIn(animationSpec = tween(200))) togetherWith
-                            (slideOutVertically { fullHeight -> -fullHeight } + fadeOut(animationSpec = tween(200)))
+                    (slideInVertically { fullHeight -> fullHeight } + fadeIn(
+                        animationSpec = tween(
+                            200
+                        )
+                    )) togetherWith
+                            (slideOutVertically { fullHeight -> -fullHeight } + fadeOut(
+                                animationSpec = tween(200)
+                            ))
                 }, label = ""
             ) { targetTitle ->
 
@@ -78,7 +114,12 @@ fun TopAppBar() {
                     append(" ")
 
                     // 숫자 부분에 Red 또는 Blue 적용
-                    withStyle(style = SpanStyle(color = numberColor, fontWeight = FontWeight.Bold)) {
+                    withStyle(
+                        style = SpanStyle(
+                            color = numberColor,
+                            fontWeight = FontWeight.Bold
+                        )
+                    ) {
                         append(parts[1]) // "2,573.61" or "727.95"
                     }
                     append(" ")
@@ -125,8 +166,15 @@ fun TopAppBar() {
     )
 }
 
+
 @Preview
 @Composable
-fun TopAppBarPreview() {
-    TopAppBar()
+fun PreviewCustomTopAppBarWithTabs() {
+    // 임의의 selectedTabIndex와 onTabSelected 콜백 정의
+    var selectedTabIndex by remember { mutableIntStateOf(0) }
+
+    CustomTopAppBarWithTabs(
+        selectedTabIndex = selectedTabIndex,
+        onTabSelected = { index -> selectedTabIndex = index }
+    )
 }
