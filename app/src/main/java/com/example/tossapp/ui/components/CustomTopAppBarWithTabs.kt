@@ -9,63 +9,133 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
+import androidx.compose.material3.TabRowDefaults
+import androidx.compose.material3.TabRowDefaults.SecondaryIndicator
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
+import androidx.compose.foundation.layout.Box as Box
 
 @Composable
 fun CustomTopAppBarWithTabs(selectedTabIndex: Int, onTabSelected: (Int) -> Unit) {
-    Column {
+    val tabWidths = remember { mutableStateOf(List(3) { 0f }) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
         // 기존 TopAppBar
         TopAppBar()
 
-        // TabRow를 추가하여 TopAppBar 아래에 탭을 왼쪽 정렬로 표시
-        TabRow(
-            selectedTabIndex = selectedTabIndex,
+        // Box로 ScrollableTabRow를 감싸서 전체 가로 길이 채움
+        Box(
             modifier = Modifier.fillMaxWidth()
         ) {
-            Tab(
-                selected = selectedTabIndex == 0,
-                onClick = { onTabSelected(0) },
-                text = { Text("토스증권 홈") }
-            )
-            Tab(
-                selected = selectedTabIndex == 1,
-                onClick = { onTabSelected(1) },
-                text = { Text("발견") }
-            )
-            Tab(
-                selected = selectedTabIndex == 2,
-                onClick = { onTabSelected(2) },
-                text = { Text("뉴스") }
+            // ScrollableTabRow는 왼쪽에 위치하도록 설정
+            ScrollableTabRow(
+                selectedTabIndex = selectedTabIndex,
+                modifier = Modifier
+                    .wrapContentWidth()
+                    .align(Alignment.TopStart), // 왼쪽에 위치시킴
+                edgePadding = 16.dp, // 좌우 여백을 없앰
+                indicator = { tabPositions ->
+                    SecondaryIndicator(
+                        modifier = Modifier
+                            .tabIndicatorOffset(tabPositions[selectedTabIndex])
+                            .width(Dp(tabWidths.value[selectedTabIndex])), // 탭 너비로 인디케이터 너비 설정
+                        color = Color.Black
+                    )
+                },
+                containerColor = Color.White, // 배경색 투명
+            ) {
+                Tab(
+                    selected = selectedTabIndex == 0,
+                    onClick = { onTabSelected(0) },
+                    text = { tabText("토스증권 홈", 0, tabWidths) }, // 텍스트의 너비를 측정하여 조절
+                    selectedContentColor = Color.Black,
+                    unselectedContentColor = Color.Gray
+                )
+                Tab(
+                    selected = selectedTabIndex == 1,
+                    onClick = { onTabSelected(1) },
+                    text = { tabText("발견", 1, tabWidths) }, // 텍스트의 너비를 측정하여 조절
+                    selectedContentColor = Color.Black,
+                    unselectedContentColor = Color.Gray
+                )
+                Tab(
+                    selected = selectedTabIndex == 2,
+                    onClick = { onTabSelected(2) },
+                    text = { tabText("뉴스", 2, tabWidths) }, // 텍스트의 너비를 측정하여 조절
+                    selectedContentColor = Color.Black,
+                    unselectedContentColor = Color.Gray
+                )
+            }
+
+            // 하단에 Divider 추가
+            Divider(
+                modifier = Modifier
+                    .fillMaxWidth() // 전체 너비로 확장
+                    .align(Alignment.BottomCenter) // 하단에 위치
+                    .height(1.dp), // Divider의 높이
+                color = Color.LightGray // Divider 색상
             )
         }
     }
 }
+// 탭의 텍스트 너비를 측정하는 함수
+@Composable
+fun tabText(text: String, index: Int, tabWidths: MutableState<List<Float>>) {
+    Text(
+        text = text,
+        modifier = Modifier.onGloballyPositioned { layoutCoordinates ->
+            // 탭의 텍스트 너비를 계산하고 저장
+            val width = layoutCoordinates.size.width.toFloat()
+            tabWidths.value = tabWidths.value.toMutableList().apply {
+                this[index] = width
+            }
+        }
+    )
+}
+
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
@@ -133,7 +203,8 @@ fun TopAppBar() {
                 Text(
                     text = annotatedTitle,
                     modifier = Modifier
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .padding(start = 16.dp),
                     color = Color.Black,
                     fontSize = 15.sp
                 )
@@ -165,7 +236,6 @@ fun TopAppBar() {
         )
     )
 }
-
 
 @Preview
 @Composable
