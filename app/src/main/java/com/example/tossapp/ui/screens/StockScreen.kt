@@ -1,75 +1,25 @@
 package com.example.tossapp.ui.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.example.tossapp.ui.components.MyAccount
-import com.example.tossapp.ui.components.MyInvest
-import com.example.tossapp.ui.components.MyInvestList
 
 @Composable
 fun StockScreen(selectedTabIndex: Int) {
     // 탭에 맞는 콘텐츠 표시
     Column(modifier = Modifier.fillMaxSize()) {
         when (selectedTabIndex) {
-            0 -> TabScreen1()
-            1 -> TabScreen2()
-            2 -> TabScreen3()
+            0 -> TossStockHome()
+            1 -> TabFind()
+            2 -> TabNews()
         }
     }
 }
 
-@Composable
-fun TabScreen1() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
-            .padding(16.dp)
-            .verticalScroll(rememberScrollState())
-    ) {
-        MyAccount()
-        Spacer(modifier = Modifier.padding(16.dp))
-        MyInvest()
-        MyInvestList()
-    }
-}
-
-@Composable
-fun TabScreen2() {
-    Text(text = "Tab 2")
-}
-
-@Composable
-fun TabScreen3() {
-    Text(text = "Tab 3")
-}
-
 @Preview
 @Composable
-fun PreviewTabScreen1() {
-    TabScreen1()
+fun PreviewStockScreen() {
+    StockScreen(selectedTabIndex = 0)
 }
-
-@Preview
-@Composable
-fun PreviewTabScreen2() {
-    TabScreen2()
-}
-
-@Preview
-@Composable
-fun PreviewTabScreen3() {
-    TabScreen3()
-}
-
