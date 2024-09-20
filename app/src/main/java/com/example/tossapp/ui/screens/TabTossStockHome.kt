@@ -34,6 +34,7 @@ import com.example.tossapp.ui.components.MyInvestList
 import com.example.tossapp.ui.screens.section.Section1
 import com.example.tossapp.ui.screens.section.Section2
 import com.example.tossapp.ui.screens.section.Section3
+import com.example.tossapp.ui.screens.section.Section4
 
 @Composable
 fun TossStockHome() {
@@ -68,6 +69,16 @@ fun TossStockHome() {
                 .height(16.dp)
                 .background(Color.LightGray)
         )
+
+        Section4()
+
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(16.dp)
+                .background(Color.LightGray)
+        )
+
     }
 }
 

@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun InterestStockList(
+fun RateStockItem(
     stockName: String = "삼성전자",
     rate: String = "+0.3%",
     price: String = "67,800원"
@@ -73,6 +73,6 @@ fun InterestStockList(
 
 @Preview
 @Composable
-fun InterestPreView() {
-    InterestStockList()
+fun RateStockItemPreView() {
+    RateStockItem()
 }

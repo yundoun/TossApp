@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun LazyRowStock() {
 
-    var items by remember { mutableStateOf(listOf("Item 1", "Item 2", "Item 3", "Item 4")) }
+    var items by remember { mutableStateOf(listOf("테슬라", "애플", "아마존", "마이크로소프트", "구글")) }
 
     LazyRow(
         modifier = Modifier
