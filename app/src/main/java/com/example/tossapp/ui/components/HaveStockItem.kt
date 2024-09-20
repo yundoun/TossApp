@@ -16,19 +16,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.tossapp.data.StockData
+import com.example.tossapp.data.HaveStockData
 
 
 @Composable
-fun StockItem(stock: StockData) {
+fun StockItem(stock: HaveStockData) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 8.dp, bottom = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
-
         ) {
         // 아이콘
         Icon(
@@ -83,12 +83,18 @@ fun StockItem(stock: StockData) {
     }
 }
 
-fun getDummyStockData(): List<StockData> {
+fun getDummyStockData(): List<HaveStockData> {
     return listOf(
-        StockData(Icons.Default.AccountCircle, "마이크로소프트", "1주", "560,000원", "+50,000 (10.0%)"),
-        StockData(Icons.Default.AccountCircle, "애플", "2주", "1,120,000원", "+120,000 (12.0%)"),
-        StockData(Icons.Default.AccountCircle, "구글", "3주", "1,680,000원", "-180,000 (15.0%)"),
-        StockData(Icons.Default.AccountCircle, "아마존", "4주", "2,240,000원", "+240,000 (20.0%)"),
-        StockData(Icons.Default.AccountCircle, "테슬라", "5주", "2,800,000원", "+300,000 (25.0%)")
+        HaveStockData(Icons.Default.AccountCircle, "마이크로소프트", "1주", "560,000원", "+50,000 (10.0%)"),
+        HaveStockData(Icons.Default.AccountCircle, "애플", "2주", "1,120,000원", "+120,000 (12.0%)"),
+        HaveStockData(Icons.Default.AccountCircle, "구글", "3주", "1,680,000원", "-180,000 (15.0%)"),
+        HaveStockData(Icons.Default.AccountCircle, "아마존", "4주", "2,240,000원", "+240,000 (20.0%)"),
+        HaveStockData(Icons.Default.AccountCircle, "테슬라", "5주", "2,800,000원", "+300,000 (25.0%)")
     )
+}
+
+@Preview
+@Composable
+fun PreviewStockItem() {
+    StockItem(getDummyStockData()[0])
 }
