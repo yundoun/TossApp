@@ -26,6 +26,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tossapp.ui.components.RecommendStockItem
 import kotlinx.coroutines.delay
 
 @Composable
@@ -98,53 +99,6 @@ fun getStockDataForTheme(theme: String): List<Triple<String, String, String>> {
         )
 
         else -> listOf()
-    }
-}
-
-@Composable
-fun RecommendStockItem(stock: Triple<String, String, String>) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 16.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Icon(
-                imageVector = Icons.Default.AccountCircle,
-                contentDescription = null,
-                modifier = Modifier.size(24.dp)
-            )
-
-            Spacer(modifier = Modifier.padding(8.dp))
-
-            Column {
-                Text(text = stock.first) // 회사 이름
-                Text(text = stock.third) // 가격
-            }
-        }
-
-        Box(
-            modifier = Modifier
-                .clip(RoundedCornerShape(4.dp))
-                .background(
-                    when {
-                        stock.second == "0.0%" -> Color.Gray
-                        stock.second.startsWith("+") -> Color.Red
-                        else -> Color.Blue
-                    }
-                )
-                .padding(4.dp) // 텍스트 주변 여백 추가
-        ) {
-            Text(
-                text = stock.second, // 변동률
-                color = Color.White
-            )
-        }
     }
 }
 

@@ -203,8 +203,7 @@ fun TopAppBar() {
                 Text(
                     text = annotatedTitle,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp),
+                        .fillMaxWidth(),
                     color = Color.Black,
                     fontSize = 15.sp
                 )
