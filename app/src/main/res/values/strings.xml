@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">TossApp</string>
+
+    <string name="myAccount">내 계좌</string>
+    <string name="timeStandard">13:47 기준 ></string>
+    <string name="won">원화</string>
+    <string name="won_unit">원</string>
+    <string name="wonDummy">7,643,552원</string>
+    <string name="dollar">달러</string>
+    <string name="dollar_unit">$</string>
+    <string name="dollarDummy">$ 6,800.00</string>
+
+    <string name="myInvestment">내 투자</string>
+    <string name="totalInvestment">37,174,000원</string>
+    <string name="totalProfit">+10,036,980원 (27.3%)</string>
+
+    <string name="alphabetically">가나다 순</string>
+    <string name="currentPrice">현재가</string>
+    <string name="assessmentFee">평가금</string>
+
+    <string name="orderDetails">주문내역</string>
+    <string name="salesRevenue">판매수익</string>
+
+    <string name="tossCertificate">토스증권</string>
+    <string name="description_1">토스증권에서 제공하는 투자 정보는 고객의 투자 판단을 위한 단순 참고용일뿐, 투자 제안 및 권유/종목 추천을 위해 작성된 것이 아닙니다.</string>
+    <string name="description_2">고객센터 | 투자 유의사항 | 개인정보처리방침</string>
+    <string name="description_3">이용자권리 및 유의사항 | 신용정보 활용체제</string>
+    <string name="beSureToKnow">꼭 알아두세요</string>
+
+
 </resources>

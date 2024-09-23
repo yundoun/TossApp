@@ -18,8 +18,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.tossapp.R
 import com.example.tossapp.common.AnimatedStatusSwitch
 
 @Composable
@@ -46,11 +48,11 @@ fun MyInvestList() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "가나다 순",
+                    text = stringResource(id = R.string.alphabetically),
                 )
                 Icon(
                     imageVector = Icons.Rounded.KeyboardArrowUp,
-                    contentDescription = "search"
+                    contentDescription = ""
                 )
             }
             Row(
@@ -64,8 +66,8 @@ fun MyInvestList() {
                     switchWidth = 80.dp,
                     switchHeight = 35.dp,
                     textSize = 10,
-                    selectedText = "현재가",
-                    unselectedText = "평가금",
+                    selectedText = stringResource(id = R.string.currentPrice),
+                    unselectedText = stringResource(id = R.string.assessmentFee),
                     isFontWeightBold = true
                 )
 
@@ -77,8 +79,8 @@ fun MyInvestList() {
                     switchWidth = 80.dp,
                     switchHeight = 35.dp,
                     textSize = 10,
-                    selectedText = "$",
-                    unselectedText = "원",
+                    selectedText = stringResource(id = R.string.dollar_unit),
+                    unselectedText = stringResource(id = R.string.won_unit),
                     isFontWeightBold = true
                 )
             }

@@ -38,6 +38,9 @@ import com.example.tossapp.ui.screens.section.Section3
 import com.example.tossapp.ui.screens.section.Section4
 import com.example.tossapp.ui.screens.section.Section5
 import com.example.tossapp.ui.screens.section.Section6
+import com.example.tossapp.ui.screens.section.Section7
+import com.example.tossapp.ui.screens.section.Section8
+import com.example.tossapp.ui.theme.baseColor
 
 @Composable
 fun TossStockHome() {
@@ -53,7 +56,7 @@ fun TossStockHome() {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(16.dp)
-                .background(Color.LightGray)
+                .background(baseColor)
         )
 
         Section2()
@@ -62,7 +65,7 @@ fun TossStockHome() {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(16.dp)
-                .background(Color.LightGray)
+                .background(baseColor)
         )
 
         Section3()
@@ -71,7 +74,7 @@ fun TossStockHome() {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(16.dp)
-                .background(Color.LightGray)
+                .background(baseColor)
         )
 
         Section4()
@@ -80,7 +83,7 @@ fun TossStockHome() {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(16.dp)
-                .background(Color.LightGray)
+                .background(baseColor)
         )
 
         Section5()
@@ -89,14 +92,16 @@ fun TossStockHome() {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(16.dp)
-                .background(Color.LightGray)
+                .background(baseColor)
         )
 
         Section6()
 
+        Section7()
+
+        Section8()
     }
 }
-
 
 
 @Preview

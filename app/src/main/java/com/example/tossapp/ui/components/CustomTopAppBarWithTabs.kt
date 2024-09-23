@@ -74,8 +74,8 @@ fun CustomTopAppBarWithTabs(selectedTabIndex: Int, onTabSelected: (Int) -> Unit)
             ScrollableTabRow(
                 selectedTabIndex = selectedTabIndex,
                 modifier = Modifier
-                    .wrapContentWidth()
-                    .align(Alignment.TopStart), // 왼쪽에 위치시킴
+                    .wrapContentWidth(),
+//                    .align(Alignment.TopStart), // 왼쪽에 위치시킴
                 edgePadding = 16.dp, // 좌우 여백을 없앰
                 indicator = { tabPositions ->
                     SecondaryIndicator(

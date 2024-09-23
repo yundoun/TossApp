@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tossapp.ui.theme.baseColor
 
 @Composable
 fun LookAroundBox(
@@ -34,7 +35,7 @@ fun LookAroundBox(
             .width(150.dp)
             .height(200.dp)
             .clip(shape = RoundedCornerShape(16.dp))
-            .background(Color.LightGray)
+            .background(baseColor)
             .padding(16.dp)
     ) {
 
@@ -48,7 +49,7 @@ fun LookAroundBox(
                 color = Color.Gray
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             Text(
                 text = bottomText,
