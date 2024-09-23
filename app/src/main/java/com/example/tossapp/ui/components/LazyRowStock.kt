@@ -18,11 +18,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tossapp.ui.theme.baseColor
+import com.example.tossapp.ui.theme.textColor2
 
 @Composable
 fun LazyRowStock() {
 
-    var items by remember { mutableStateOf(listOf("테슬라", "애플", "아마존", "마이크로소프트", "구글")) }
+    var items by remember {
+        mutableStateOf(
+            listOf(
+                "테슬라 +1.0%",
+                "애플 -0.1%",
+                "아마존 +2.17%",
+                "마이크로소프트 +0.2%",
+                "구글 -1.2%"
+            )
+        )
+    }
 
     LazyRow(
         modifier = Modifier
@@ -46,19 +58,38 @@ fun LazyRowStock() {
 fun RowItem(text: String, onDelete: () -> Unit) {
     Row(
         modifier = Modifier
-            .background(Color.LightGray, shape = RoundedCornerShape(8.dp))
+            .background(baseColor, shape = RoundedCornerShape(8.dp))
             .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
     ) {
+        val parts = text.split(" ")
+        val stockName = parts[0]
+        val stockChange = parts[1]
+
+        val changeColor = when {
+            stockChange.startsWith("+") -> Color.Red  // 상승일 때 빨간색
+            stockChange.startsWith("-") -> Color.Blue // 하락일 때 파란색
+            else -> Color.Black
+        }
+
         Text(
-            text = text,
+            text = stockName,
             fontSize = 16.sp,
             color = Color.Black,
         )
+        
+        Spacer(modifier = Modifier.width(4.dp))
+
+        Text(
+            text = stockChange,
+            fontSize = 16.sp,
+            color = changeColor, // 변화율에 따른 색상 적용
+        )
+
         Text(
             text = "X",
             fontSize = 16.sp,
-            color = Color.Red,
+            color = textColor2,
             modifier = Modifier
                 .clickable { onDelete() }
                 .padding(start = 8.dp)
