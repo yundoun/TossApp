@@ -2,8 +2,10 @@ package com.example.tossapp.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
@@ -14,8 +16,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tossapp.ui.theme.baseColor
@@ -39,6 +43,9 @@ fun LazyRowStock() {
     LazyRow(
         modifier = Modifier
             .padding(top = 16.dp)
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         items(items.size) { index ->
             val item = items[index]
@@ -60,7 +67,8 @@ fun RowItem(text: String, onDelete: () -> Unit) {
         modifier = Modifier
             .background(baseColor, shape = RoundedCornerShape(8.dp))
             .padding(horizontal = 16.dp, vertical = 8.dp),
-        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
     ) {
         val parts = text.split(" ")
         val stockName = parts[0]
@@ -77,12 +85,12 @@ fun RowItem(text: String, onDelete: () -> Unit) {
             fontSize = 16.sp,
             color = Color.Black,
         )
-        
+
         Spacer(modifier = Modifier.width(4.dp))
 
         Text(
             text = stockChange,
-            fontSize = 16.sp,
+            fontSize = 14.sp,
             color = changeColor, // 변화율에 따른 색상 적용
         )
 
@@ -95,4 +103,10 @@ fun RowItem(text: String, onDelete: () -> Unit) {
                 .padding(start = 8.dp)
         )
     }
+}
+
+@Preview
+@Composable
+fun LazyRowStockPreview() {
+    LazyRowStock()
 }
