@@ -1,10 +1,8 @@
 package com.example.tossapp.ui.screens.section
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,9 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -25,12 +22,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.tossapp.R
 import com.example.tossapp.data.NewsRepository
 import com.example.tossapp.ui.components.NewsItem
 
@@ -43,22 +38,25 @@ fun Section4() {
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
-            .padding(16.dp)
+            .padding(top = 16.dp)
     ) {
         Text(
             text = "윤도운님을 위한 추천 뉴스",
             color = Color.Black,
             fontSize = 20.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(horizontal = 16.dp),
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Row {
+        Row(
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        ) {
             ToggleButton(
                 text = "보유 종목",
                 isSelected = selectedButton == "보유 종목",
-                onClick = { selectedButton = "보유 종목" }
+                onClick = { selectedButton = "보유 종목" },
             )
 
             Spacer(modifier = Modifier.width(8.dp))
@@ -72,11 +70,35 @@ fun Section4() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Column {
+        Column(
+            modifier = Modifier.padding(horizontal = 16.dp),
+        ) {
             NewsRepository.newsData.forEach { news ->
                 NewsItem(news = news)
                 Spacer(modifier = Modifier.height(16.dp))
             }
+        }
+
+        HorizontalDivider(
+            thickness = 1.dp,   // 구분선 두께 지정
+            color = Color.LightGray // 구분선 색상 지정
+        )
+
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White)
+                .height(50.dp)
+                .clickable {
+
+                }
+        ) {
+            Text(
+                text = "더 보기",
+                color = Color.Gray,
+                fontSize = 16.sp,
+            )
         }
     }
 }

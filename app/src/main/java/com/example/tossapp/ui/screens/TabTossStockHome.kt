@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -35,6 +36,8 @@ import com.example.tossapp.ui.screens.section.Section1
 import com.example.tossapp.ui.screens.section.Section2
 import com.example.tossapp.ui.screens.section.Section3
 import com.example.tossapp.ui.screens.section.Section4
+import com.example.tossapp.ui.screens.section.Section5
+import com.example.tossapp.ui.screens.section.Section6
 
 @Composable
 fun TossStockHome() {
@@ -43,6 +46,7 @@ fun TossStockHome() {
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
+
         Section1()
 
         Spacer(
@@ -78,6 +82,17 @@ fun TossStockHome() {
                 .height(16.dp)
                 .background(Color.LightGray)
         )
+
+        Section5()
+
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(16.dp)
+                .background(Color.LightGray)
+        )
+
+        Section6()
 
     }
 }
