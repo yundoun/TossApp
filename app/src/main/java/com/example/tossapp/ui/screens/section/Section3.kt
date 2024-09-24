@@ -109,6 +109,7 @@ fun Section3() {
                     expanded = expandedItemIndex == index,
                     onClick = {
                         expandedItemIndex = if (expandedItemIndex == index) -1 else index
+                        selectedTabIndex = index
                     }
                 )
             }

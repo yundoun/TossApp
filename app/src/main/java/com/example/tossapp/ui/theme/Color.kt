@@ -17,3 +17,5 @@ val textColor1 = Color(0xffe1e2e3)
 val textColor2 = Color(0xFFcccecf)
 
 val textColor3 = Color(0xFFa8a9aa)
+
+val itemBackground = Color(0xFFf7f5f5)

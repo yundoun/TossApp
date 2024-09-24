@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tossapp.ui.theme.itemBackground
 
 @Composable
 fun ExpandableItem(
@@ -52,7 +53,7 @@ fun ExpandableItem(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.White),
+                    .background(itemBackground)
             ) {
                 item.forEach { stock ->
                     RateStockItem(stock.first, stock.second, stock.third)
