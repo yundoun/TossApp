@@ -53,7 +53,7 @@ fun Section3() {
     ) {
         // 타이틀
         Text(
-            text = "관심 종목",
+            text = stringResource(id = R.string.interestedItems),
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
