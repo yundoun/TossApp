@@ -104,6 +104,6 @@ fun getStockDataForTheme(theme: String): List<Triple<String, String, String>> {
 
 @Preview
 @Composable
-fun Section5Preview() {
+fun PreviewSection5() {
     Section5()
 }

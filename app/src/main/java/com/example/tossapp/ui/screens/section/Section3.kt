@@ -19,10 +19,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tossapp.R
 import com.example.tossapp.common.CustomIndicator
 import com.example.tossapp.data.StockData
 import com.example.tossapp.ui.components.ExpandableItem
@@ -32,7 +34,13 @@ fun Section3() {
     var selectedTabIndex by remember { mutableIntStateOf(0) }
     var expandedItemIndex by remember { mutableIntStateOf(-1) } // 5열 아이템의 확장 상태
 
-    val tabNames = listOf("미국", "대한민국", "ISA", "성장주", "배당주")
+    val tabNames = listOf(
+        stringResource(id = R.string.tab_us),
+        stringResource(id = R.string.tab_korea),
+        stringResource(id = R.string.tab_isa),
+        stringResource(id = R.string.tab_growth),
+        stringResource(id = R.string.tab_dividend),
+    )
 
     // 더미 데이터
     val stockData = StockData.stockData
@@ -74,7 +82,7 @@ fun Section3() {
                     selected = selectedTabIndex == index,
                     onClick = {
                         selectedTabIndex = index
-                        expandedItemIndex = -1 // 새로운 탭 선택 시 확장된 아이템 초기화
+                        expandedItemIndex = index // 새로운 탭 선택 시 확장된 아이템 초기화
                     },
                     text = {
                         Text(

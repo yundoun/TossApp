@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tossapp.common.MenuTitle
+import com.example.tossapp.ui.components.CommonSpacer
 import com.example.tossapp.ui.components.MyAccount
 import com.example.tossapp.ui.components.MyInvest
 import com.example.tossapp.ui.components.MyInvestList
@@ -52,48 +53,23 @@ fun TossStockHome() {
 
         Section1()
 
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(16.dp)
-                .background(baseColor)
-        )
+            CommonSpacer()
 
         Section2()
 
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(16.dp)
-                .background(baseColor)
-        )
+            CommonSpacer()
 
         Section3()
 
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(16.dp)
-                .background(baseColor)
-        )
+            CommonSpacer()
 
         Section4()
 
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(16.dp)
-                .background(baseColor)
-        )
+            CommonSpacer()
 
         Section5()
 
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(16.dp)
-                .background(baseColor)
-        )
+            CommonSpacer()
 
         Section6()
 

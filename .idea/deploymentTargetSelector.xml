@@ -16,10 +16,16 @@
       <SelectionState runConfigName="PreviewSection1">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Section2Preview">
+      <SelectionState runConfigName="PreviewSection3">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PreviewSection3">
+      <SelectionState runConfigName="PreviewSection2">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="PreviewSection4">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="PreviewSection5">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

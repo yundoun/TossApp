@@ -48,6 +48,7 @@ fun Section8() {
             Text(
                 text = stringResource(id = R.string.tossCertificate),
                 color = Color.Gray,
+                fontSize = 12.sp
             )
         }
 
@@ -55,19 +56,22 @@ fun Section8() {
 
         Text(
             text = stringResource(id = R.string.description_1),
-            color = Color.Gray
+            color = Color.Gray,
+            fontSize = 12.sp
         )
 
         Spacer(modifier = Modifier.padding(8.dp))
 
         Text(
             text = stringResource(id = R.string.description_2),
-            color = Color.Gray
+            color = Color.Gray,
+            fontSize = 12.sp
         )
 
         Text(
             text = stringResource(id = R.string.description_3),
-            color = Color.Gray
+            color = Color.Gray,
+            fontSize = 12.sp
         )
 
         Spacer(modifier = Modifier.padding(16.dp))
@@ -89,6 +93,8 @@ fun Section8() {
                 contentDescription = null
             )
         }
+
+        Spacer(modifier = Modifier.padding(80.dp))
     }
 }
 

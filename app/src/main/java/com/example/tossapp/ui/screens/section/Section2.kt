@@ -51,7 +51,7 @@ fun Section2() {
 
 @Preview
 @Composable
-fun Section2Preview() {
+fun PreviewSection2() {
     Section2()
 }
 
