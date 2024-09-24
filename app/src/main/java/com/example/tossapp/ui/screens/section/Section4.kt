@@ -22,17 +22,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tossapp.R
 import com.example.tossapp.data.NewsRepository
 import com.example.tossapp.ui.components.NewsItem
 
 @Composable
 fun Section4() {
 
-    var selectedButton by remember { mutableStateOf("관심 종목") }
+    val holdingItems = stringResource(id = R.string.holdingItems)
+    val interestedItems = stringResource(id = R.string.interestedItems)
+    var selectedButton by remember { mutableStateOf(interestedItems) }
 
     Column(
         modifier = Modifier
@@ -41,7 +45,7 @@ fun Section4() {
             .padding(top = 16.dp)
     ) {
         Text(
-            text = "윤도운님을 위한 추천 뉴스",
+            text = stringResource(id = R.string.recommendNews),
             color = Color.Black,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
@@ -54,17 +58,18 @@ fun Section4() {
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
         ) {
             ToggleButton(
-                text = "보유 종목",
-                isSelected = selectedButton == "보유 종목",
-                onClick = { selectedButton = "보유 종목" },
+
+                text = holdingItems,
+                isSelected = selectedButton == holdingItems,
+                onClick = { selectedButton = holdingItems },
             )
 
             Spacer(modifier = Modifier.width(8.dp))
 
             ToggleButton(
-                text = "관심 종목",
-                isSelected = selectedButton == "관심 종목",
-                onClick = { selectedButton = "관심 종목" }
+                text = interestedItems,
+                isSelected = selectedButton == interestedItems,
+                onClick = { selectedButton = interestedItems }
             )
         }
 
@@ -95,7 +100,7 @@ fun Section4() {
                 }
         ) {
             Text(
-                text = "더 보기",
+                text = stringResource(id = R.string.seeMore),
                 color = Color.Gray,
                 fontSize = 16.sp,
             )

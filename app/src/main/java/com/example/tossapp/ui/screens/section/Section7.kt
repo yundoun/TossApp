@@ -33,10 +33,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tossapp.R
 import com.example.tossapp.ui.components.AnimatedPressableItem
 import com.example.tossapp.ui.theme.baseColor
 @Composable
@@ -75,12 +77,12 @@ fun Section7() {
 
                         Column {
                             Text(
-                                text = "지금까지 토스증권 어땠나요?",
+                                text = stringResource(R.string.QA_1),
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold
                             )
                             Text(
-                                text = "의견 보내기"
+                                text = stringResource(R.string.sendFeedback)
                             )
                         }
                     }

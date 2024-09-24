@@ -13,16 +13,13 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="MainScreen">
+      <SelectionState runConfigName="PreviewSection1">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MainScreenPreview">
+      <SelectionState runConfigName="Section2Preview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PreviewCustomTopAppBarWithTabs">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="MyAccountPreview">
+      <SelectionState runConfigName="PreviewSection3">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

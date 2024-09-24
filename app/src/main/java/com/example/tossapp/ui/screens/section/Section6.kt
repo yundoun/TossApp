@@ -11,28 +11,24 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tossapp.R
+import com.example.tossapp.data.CardData
 import com.example.tossapp.ui.components.LookAroundBox
 
 @Composable
 fun Section6() {
 
-    val dataList = listOf(
-        Triple("실시간", "거래량 많은\n주식보기", Icons.Default.DateRange),
-        Triple("오늘도", "출석체크\n하러가기", Icons.Default.DateRange),
-        Triple("차곡차곡", "주식\n모으기", Icons.Default.DateRange),
-        Triple("이자받는", "해외채권\n보러가기", Icons.Default.DateRange)
-    )
+    val dataList = CardData.dataList
 
     Column(
         modifier = Modifier
@@ -40,7 +36,7 @@ fun Section6() {
             .padding(vertical = 16.dp)
     ) {
         Text(
-            text = "둘러보기",
+            text = stringResource(id = R.string.takeATour),
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier

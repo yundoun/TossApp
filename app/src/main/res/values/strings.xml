@@ -21,11 +21,39 @@
     <string name="orderDetails">주문내역</string>
     <string name="salesRevenue">판매수익</string>
 
+    <string name="recentlyViewed">최근 본 종목</string>
+    <string name="interestedItems">관심 종목</string>
+
+    <string name="recommendNews">윤도운님을 위한 추천 뉴스</string>
+    <string name="holdingItems">보유 종목</string>
+    <string name="seeMore">더 보기</string>
+
+    <string name="tab_us">미국</string>
+    <string name="tab_korea">대한민국</string>
+    <string name="tab_isa">ISA</string>
+    <string name="tab_growth">성장주</string>
+    <string name="tab_dividend">배당주</string>
+
+    <string name="theme_nuclear">원전</string>
+    <string name="theme_uam">UAM</string>
+    <string name="theme_entertain">엔터</string>
+
+    <string name="mightBeInterestedStock">윤도운님이 관심 있어 할\n%s 관련 주식</string>
+    <string name="analysisRecent">최근 찾아 본 주식을 분석했어요</string>
+    <string name="takeATour">둘러보기</string>
+
+    <string name="QA_1">지금까지 토스증권 어땠나요?</string>
+    <string name="sendFeedback">의견 보내기</string>
+
     <string name="tossCertificate">토스증권</string>
     <string name="description_1">토스증권에서 제공하는 투자 정보는 고객의 투자 판단을 위한 단순 참고용일뿐, 투자 제안 및 권유/종목 추천을 위해 작성된 것이 아닙니다.</string>
     <string name="description_2">고객센터 | 투자 유의사항 | 개인정보처리방침</string>
     <string name="description_3">이용자권리 및 유의사항 | 신용정보 활용체제</string>
     <string name="beSureToKnow">꼭 알아두세요</string>
 
+
+    <string-array name="stockData">
+
+    </string-array>
 
 </resources>
