@@ -19,25 +19,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tossapp.R
 import com.example.tossapp.ui.theme.baseColor
 import com.example.tossapp.ui.theme.textColor2
+
 
 @Composable
 fun LazyRowStock() {
 
+    val context = LocalContext.current
     var items by remember {
-        mutableStateOf(
-            listOf(
-                "테슬라 +1.0%",
-                "애플 -0.1%",
-                "아마존 +2.17%",
-                "마이크로소프트 +0.2%",
-                "구글 -1.2%"
-            )
-        )
+        mutableStateOf(context.resources.getStringArray(R.array.stock_items).toList())
     }
 
     LazyRow(

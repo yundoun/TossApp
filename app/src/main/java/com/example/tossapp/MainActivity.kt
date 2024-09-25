@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
@@ -70,19 +71,19 @@ fun MainScreen() {
             modifier = Modifier.padding(paddingValues)
         ) {
             composable("home") {
-                SimpleTextScreen("Home Screen")
+                SimpleTextScreen(stringResource(id = R.string.screen_1))
             }
             composable("benefits") {
-                SimpleTextScreen("Benefits Screen")
+                SimpleTextScreen(stringResource(id = R.string.screen_2))
             }
             composable("tossPay") {
-                SimpleTextScreen("TossPay Screen")
+                SimpleTextScreen(stringResource(id = R.string.screen_3))
             }
             composable("stock") {
                 StockScreen(selectedTabIndex)
             }
             composable("allMenu") {
-                SimpleTextScreen("AllMenu Screen")
+                SimpleTextScreen(stringResource(id = R.string.screen_5))
             }
         }
     }

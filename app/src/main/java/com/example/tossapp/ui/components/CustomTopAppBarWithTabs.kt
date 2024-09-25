@@ -44,6 +44,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -52,6 +53,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tossapp.R
 import kotlinx.coroutines.delay
 import androidx.compose.foundation.layout.Box as Box
 
@@ -75,7 +77,6 @@ fun CustomTopAppBarWithTabs(selectedTabIndex: Int, onTabSelected: (Int) -> Unit)
                 selectedTabIndex = selectedTabIndex,
                 modifier = Modifier
                     .wrapContentWidth(),
-//                    .align(Alignment.TopStart), // 왼쪽에 위치시킴
                 edgePadding = 16.dp, // 좌우 여백을 없앰
                 indicator = { tabPositions ->
                     SecondaryIndicator(
@@ -90,40 +91,40 @@ fun CustomTopAppBarWithTabs(selectedTabIndex: Int, onTabSelected: (Int) -> Unit)
                 Tab(
                     selected = selectedTabIndex == 0,
                     onClick = { onTabSelected(0) },
-                    text = { tabText("토스증권 홈", 0, tabWidths) }, // 텍스트의 너비를 측정하여 조절
+                    text = { TabText(stringResource(id = R.string.tab_menu_1), 0, tabWidths) },
                     selectedContentColor = Color.Black,
                     unselectedContentColor = Color.Gray
                 )
                 Tab(
                     selected = selectedTabIndex == 1,
                     onClick = { onTabSelected(1) },
-                    text = { tabText("발견", 1, tabWidths) }, // 텍스트의 너비를 측정하여 조절
+                    text = { TabText(stringResource(id = R.string.tab_menu_2), 1, tabWidths) },
                     selectedContentColor = Color.Black,
                     unselectedContentColor = Color.Gray
                 )
                 Tab(
                     selected = selectedTabIndex == 2,
                     onClick = { onTabSelected(2) },
-                    text = { tabText("뉴스", 2, tabWidths) }, // 텍스트의 너비를 측정하여 조절
+                    text = { TabText(stringResource(id = R.string.tab_menu_3), 2, tabWidths) },
                     selectedContentColor = Color.Black,
                     unselectedContentColor = Color.Gray
                 )
             }
 
             // 하단에 Divider 추가
-            Divider(
+            HorizontalDivider(
                 modifier = Modifier
-                    .fillMaxWidth() // 전체 너비로 확장
-                    .align(Alignment.BottomCenter) // 하단에 위치
-                    .height(1.dp), // Divider의 높이
-                color = Color.LightGray // Divider 색상
+                    .fillMaxWidth()
+                    .align(Alignment.BottomCenter)
+                    .height(1.dp),
+                color = Color.LightGray
             )
         }
     }
 }
 // 탭의 텍스트 너비를 측정하는 함수
 @Composable
-fun tabText(text: String, index: Int, tabWidths: MutableState<List<Float>>) {
+fun TabText(text: String, index: Int, tabWidths: MutableState<List<Float>>) {
     Text(
         text = text,
         modifier = Modifier.onGloballyPositioned { layoutCoordinates ->
@@ -141,7 +142,10 @@ fun tabText(text: String, index: Int, tabWidths: MutableState<List<Float>>) {
 @Composable
 fun TopAppBar() {
 
-    val titles = listOf("코스피 2,573.61 +0.05%", "코스닥 727.95 -0.4%")
+    val titles = listOf(
+        stringResource(id = R.string.title_kospi),
+        stringResource(id = R.string.title_kosdaq)
+    )
 
     var currentTitleIndex by remember { mutableIntStateOf(0) }
     var isTitleVisible by remember { mutableStateOf(true) }
@@ -163,6 +167,12 @@ fun TopAppBar() {
 
     androidx.compose.material3.TopAppBar(
         title = {
+            // slideInVertically : 타이틀이 아래에서 위로 등장하는 애니메이션 정의
+            // fullHeight : 값을 사용해 전체 높이만큼 슬라이드하게 함
+            // fadeIn : 텍스트가 등장할 때 200ms 동안 서서히 나타나게 함
+            // slideOutVertically : 타이틀이 위에서 아래로 사라지게 하는 애니메이션
+            // fadeOut : 타이틀이 사라질 때 서서히 사라지도록 200ms 동안 페이드 아웃을 적용
+
             AnimatedContent(
                 targetState = titles[currentTitleIndex],
                 transitionSpec = {
@@ -178,6 +188,7 @@ fun TopAppBar() {
             ) { targetTitle ->
 
                 // 부분적으로 스타일을 적용한 AnnotatedString 생성
+                // 일부 텍스트에 다른 색상을 적용하기 위해 사용함
                 val annotatedTitle = buildAnnotatedString {
                     val parts = targetTitle.split(" ")
                     append(parts[0]) // "코스피" or "코스닥"
@@ -211,19 +222,19 @@ fun TopAppBar() {
         },
         actions = {
             IconButton(onClick = {
-                // 검색 아이콘 클릭 시 수행할 작업
+
             }) {
                 Icon(
                     imageVector = Icons.Rounded.Search,
-                    contentDescription = "Search"
+                    contentDescription = ""
                 )
             }
             IconButton(onClick = {
-                // 더보기 아이콘 클릭 시 수행할 작업
+
             }) {
                 Icon(
                     imageVector = Icons.Rounded.Menu,
-                    contentDescription = "More"
+                    contentDescription = ""
                 )
             }
         },
@@ -239,7 +250,7 @@ fun TopAppBar() {
 @Preview
 @Composable
 fun PreviewCustomTopAppBarWithTabs() {
-    // 임의의 selectedTabIndex와 onTabSelected 콜백 정의
+
     var selectedTabIndex by remember { mutableIntStateOf(0) }
 
     CustomTopAppBarWithTabs(

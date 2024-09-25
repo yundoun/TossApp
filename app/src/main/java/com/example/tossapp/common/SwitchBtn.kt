@@ -51,7 +51,8 @@ fun AnimatedStatusSwitch(
     var isCurrentPriceSelected by remember { mutableStateOf(initialIsSelected) }
     val thumbWidth = switchWidth / 2
 
-    // 애니메이션을 위한 오프셋 값을 Dp로 관리
+    // offsetX 변수는 스위치가 좌우로 이동할 위치를 나타냄
+    // 슬라이딩 애니메이션을 위해 animateDpAsState 사용
     val offsetX by animateDpAsState(
         targetValue = if (isCurrentPriceSelected) 0.dp else thumbWidth,
         label = ""

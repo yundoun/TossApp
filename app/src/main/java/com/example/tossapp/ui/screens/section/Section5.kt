@@ -50,7 +50,7 @@ fun Section5() {
             .padding(16.dp)
     ) {
         Text(
-            text = stringResource(id = R.string.mightBeInterestedStock),
+            text = stringResource(id = R.string.mightBeInterestedStock, themeState.value),
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold
         )

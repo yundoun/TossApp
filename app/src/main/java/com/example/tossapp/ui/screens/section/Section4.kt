@@ -58,7 +58,6 @@ fun Section4() {
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
         ) {
             ToggleButton(
-
                 text = holdingItems,
                 isSelected = selectedButton == holdingItems,
                 onClick = { selectedButton = holdingItems },

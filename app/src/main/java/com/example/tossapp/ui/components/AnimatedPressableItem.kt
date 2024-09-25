@@ -27,7 +27,7 @@ fun AnimatedPressableItem(
     content: @Composable () -> Unit
 ) {
     var isPressed by remember { mutableStateOf(false) }
-    val scale by animateFloatAsState(if (isPressed) 0.95f else 1f)
+    val scale by animateFloatAsState(if (isPressed) 0.95f else 1f, label = "")
     val interactionSource = remember { MutableInteractionSource() }
 
     Box(
@@ -35,23 +35,23 @@ fun AnimatedPressableItem(
             .clip(shape = RoundedCornerShape(8.dp))
             .background(Color.Transparent)
             .pointerInput(Unit) {
-                detectTapGestures(
+                detectTapGestures( // 터치 이벤트 감지
                     onPress = {
-                        isPressed = true
+                        isPressed = true // 터치 했을 때
                         val press = PressInteraction.Press(it)
                         interactionSource.emit(press)
                         try {
                             awaitRelease()
                         } finally {
-                            isPressed = false
+                            isPressed = false // 터치 해제 했을 때
                             interactionSource.emit(PressInteraction.Release(press))
                         }
                     },
                     onTap = { onClick() }
                 )
             }
-            .scale(scale)
-            .indication(
+            .scale(scale) // isPressed 값에 따라 크기 조절
+            .indication( // 리플 애니메이션 추가
                 interactionSource,
                 rememberRipple(bounded = true, color = Color.Gray)
             )

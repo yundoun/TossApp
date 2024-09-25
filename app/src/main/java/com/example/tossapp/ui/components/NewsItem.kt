@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tossapp.data.News
@@ -45,8 +46,6 @@ fun NewsItem(news: News) {
                 )
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
-
             Text(
                 text = news.newsTitle,
                 color = Color.Black,
@@ -54,7 +53,7 @@ fun NewsItem(news: News) {
                 fontWeight = FontWeight.Bold
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
             Row(
                 verticalAlignment = Alignment.CenterVertically
@@ -81,4 +80,19 @@ fun NewsItem(news: News) {
                 .height(80.dp)
         )
     }
+}
+
+@Preview
+@Composable
+fun PreviewNewsItem() {
+    NewsItem(
+        news = News(
+            stockName = "삼성전자",
+            priceChange = "+1.23%",
+            newsTitle = "삼성전자, 3분기 실적 발표",
+            newsSource = "머니투데이",
+            publishedAt = "2021.10.15",
+            imageResource = com.example.tossapp.R.drawable.news
+        )
+    )
 }

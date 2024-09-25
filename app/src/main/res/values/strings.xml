@@ -1,6 +1,29 @@
 <resources>
     <string name="app_name">TossApp</string>
 
+    <string name="route_home">home</string>
+
+    <string name="screen_1">Home Screen</string>
+    <string name="screen_2">Benefits Screen</string>
+    <string name="screen_3">TossPay Screen</string>
+    <string name="screen_5">AllMenu Screen</string>
+
+    <string name="title_kospi">코스피 2,573.61 +0.05%</string>
+    <string name="title_kosdaq">코스닥 727.95 -0.4%</string>
+
+    <string-array name="stock_items">
+        <item>테슬라 +1.0%</item>
+        <item>애플 -0.1%</item>
+        <item>아마존 +2.17%</item>
+        <item>마이크로소프트 +0.2%</item>
+        <item>구글 -1.2%</item>
+    </string-array>
+
+    <string name="tab_menu_1">토스증권 홈</string>
+    <string name="tab_menu_2">발견</string>
+    <string name="tab_menu_3">뉴스</string>
+
+
     <string name="myAccount">내 계좌</string>
     <string name="timeStandard">13:47 기준 ></string>
     <string name="won">원화</string>
